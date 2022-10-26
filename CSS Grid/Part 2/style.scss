@@ -1,0 +1,61 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: sans-serif;
+}
+
+// Implicit and Explicit Grids
+.container {
+	width: 1000px;
+	margin: 30px auto;
+	background-color: #ddd;
+	display: grid;
+
+	// explicitly defined rows and columns
+	grid-template-rows: repeat(2, 150px);
+	grid-template-columns: repeat(2, 1fr);
+
+	gap: 30px;
+
+	// implicitly defined rows
+	grid-auto-rows: 80px;
+
+	// grid auto-flow : defines if remaining items should be added as rows or columns
+	grid-auto-flow: row dense; // the dense property eliminates empty spaces in the grid
+
+	// implicitly defined columns
+	grid-auto-columns: 0.5fr;
+
+	// ALIGN GRID ITEMS TO GRID AREAS
+	// align-items: center; // align-items aligns the grid items vertically within their cells
+	// justify-items: center; // justify-items aligns the grid items horizontally within their cells
+
+	// ALIGN GRID TRACKS TO GRID CONTAINER
+	grid-template-rows: repeat(2, 100px);
+	grid-template-columns: repeat(2, 200px);
+	height: 1000px;
+	justify-content: space-between; // aligns the grid track horizontally within the grid container
+	align-content: center; // aligns the grid vertically within the grid container
+
+	.item {
+		padding: 20px;
+		color: #fff;
+		font-size: 30px;
+		background-color: orange;
+
+		&--4 {
+			background-color: crimson;
+			grid-row: 2 / span 3;
+			align-self: end; // aligns item vertically, independently of other grid items
+		}
+		&--7 {
+			background-color: palevioletred;
+			grid-column: 1/-1;
+			justify-self: start; // justifies item horizontally, independently of other grid items
+		}
+	}
+}
